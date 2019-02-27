@@ -1,17 +1,11 @@
 package com.revature.eval.java.core;
 
-import java.lang.reflect.Array;
-import java.time.*;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.Temporal;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -327,23 +321,28 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String toPigLatin(String string) {
+//		String[] words = string.split("\\s");
+//	    for (int i = 0; i < words.length; i++) {
+//			 String vowels = "aeiouAEIOU";
 
-	
 		char firstletter = string.charAt(0);
 		
 		if(firstletter == 'a' || firstletter == 'e' || firstletter == 'i' || firstletter == 'o' || firstletter == 'u')
 			return string.concat("ay");
 		else {
-		// String[] cut = string.split("(.*?)([aeiou].*)");
-		 String[] cut = string.split("([aeiou].*)");
-		 System.out.println(cut.toString());
-//		 String[] cut2 = string.split("([aeiou].*)");
-//		 System.out.println(cut[1].toString() + cut[0].toString() + "ay");
-		
+			 String vowels = "aeiouAEIOU";
+			    for (int i = 0; i < string.length(); i++) {
+			        if (vowels.contains(""+string.charAt(i))) {
+			            String before = string.substring(0, i);
+			            String after = string.substring(i);
+			            string = after + before + "ay";
+			            break;
+			        }
+			    }
+			    return string;
 		}
-	        
-		    return string;
-	}
+	  }
+	
 	/**
 	 * 9. An Armstrong number is a number that is the sum of its own digits each
 	 * raised to the power of the number of digits.
@@ -557,7 +556,21 @@ public class EvaluationService {
 		 */
 		public static String encode(String string) {
 			// TODO Write an implementation for this method declaration
-			return null;
+			String modified = string.toLowerCase();
+	        String replace =modified.replaceAll("[,.\\s]","");
+	        System.out.println(replace);
+			StringBuilder encoded = new StringBuilder();
+	        for (char c : replace.toCharArray()) {
+	            if (Character.isAlphabetic(c)) {
+	                int newChar = (('a' - c) + 'z');
+	                encoded.append((char) newChar);
+	            } else {
+	                encoded.append(c);
+	            }
+	        }
+	        String spaceAdded = encoded.toString().replaceAll("(.{5})", "$1 ");
+	       // String lastSape =spaceAdded.substring(0, spaceAdded.length()-1); //works for last test
+	        return spaceAdded;
 		}
 
 		/**
@@ -565,11 +578,23 @@ public class EvaluationService {
 		 * 
 		 * @param string
 		 * @return
+		 * abcdefghijklmnopqrstuvwxyz
+		 * zyxwvutsrqponmlkjihgfedcba
 		 */
 		public static String decode(String string) {
-			// TODO Write an implementation for this method declaration
-			return null;
-		}
+			StringBuilder decoded = new StringBuilder();
+	        for (char c : string.toCharArray()) {
+	            if (Character.isAlphabetic(c)) {
+	                int newChar = ('z' - c) + 'a';
+	                decoded.append((char) newChar);
+	            } else {
+	                decoded.append(c);
+	            }
+	        }
+	        String unspaced =decoded.toString();
+	        return unspaced.replaceAll("\\s","");
+	    }
+		
 	}
 
 	/**

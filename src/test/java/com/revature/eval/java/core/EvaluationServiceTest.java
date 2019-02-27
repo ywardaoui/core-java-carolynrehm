@@ -305,30 +305,30 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 8
 	 ******************************************************************/
-//	@Test
-//	public void testWordBeginningWithA() {
-//		assertEquals("appleay", evaluationService.toPigLatin("apple"));
-//	}
+	@Test
+	public void testWordBeginningWithA() {
+		assertEquals("appleay", evaluationService.toPigLatin("apple"));
+	}
 
 	@Test
 	public void testThTreatedLikeAConsonantAtTheBeginningOfAWord() {
 		assertEquals("erapythay", evaluationService.toPigLatin("therapy"));
 	}
 
-//	@Test
-//	public void testSchTreatedLikeAConsonantAtTheBeginningOfAWord() {
-//		assertEquals("oolschay", evaluationService.toPigLatin("school"));
-//	}
-//
-//	@Test
-//	public void testYTreatedLikeAConsonantAtTheBeginningOfAWord() {
-//		assertEquals("ellowyay", evaluationService.toPigLatin("yellow"));
-//	}
+	@Test
+	public void testSchTreatedLikeAConsonantAtTheBeginningOfAWord() {
+		assertEquals("oolschay", evaluationService.toPigLatin("school"));
+	}
 
-//	@Test
-//	public void testAWholePhrase() {
-//		assertEquals("ickquay astfay unray", evaluationService.toPigLatin("quick fast run"));
-//	}
+	@Test
+	public void testYTreatedLikeAConsonantAtTheBeginningOfAWord() {
+		assertEquals("ellowyay", evaluationService.toPigLatin("yellow"));
+	}
+
+	@Test
+	public void testAWholePhrase() {
+		assertEquals("ickquay astfay unray", evaluationService.toPigLatin("quick fast run"));
+	}
 
 	/*******************************************************************
 	 * Question 9
