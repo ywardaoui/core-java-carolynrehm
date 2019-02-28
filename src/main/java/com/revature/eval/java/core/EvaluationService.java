@@ -569,8 +569,11 @@ public class EvaluationService {
 	            }
 	        }
 	        String spaceAdded = encoded.toString().replaceAll("(.{5})", "$1 ");
-	       // String lastSape =spaceAdded.substring(0, spaceAdded.length()-1); //works for last test
-	        return spaceAdded;
+	        if (encoded.length()%5 == 0) {
+	        String lastSpaced =spaceAdded.substring(0, spaceAdded.length()-1); 
+	        return lastSpaced;
+	        }
+	        else return spaceAdded;
 		}
 
 		/**
